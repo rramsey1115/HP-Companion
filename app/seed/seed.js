@@ -12,10 +12,13 @@ import {
   spellComments,
   ingredientComments,
   potionComments,
-} from "@/app/lib/placeholder-data";
+} from "../lib/placeholder-data.js";
 import postgres from "postgres";
 import bcrypt from "bcrypt";
+import dotenv from "dotenv";
+dotenv.config();
 
+console.log("Process.env.POSTGRES_URL: ", process.env.POSTGRES_URL);
 const sql = postgres(process.env.POSTGRES_URL, { ssl: "require" });
 
 // Ensure the uuid extension is enabled once
@@ -56,7 +59,7 @@ const seedBooks = async () => {
   await sql`
     CREATE TABLE IF NOT EXISTS books (
       id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-      name VARCHAR(255) NOT NULL,
+      name TEXT,
       description TEXT,
       image TEXT
     );
@@ -65,8 +68,8 @@ const seedBooks = async () => {
   const insertedBooks = await Promise.all(
     books.map(async (book) => {
       return sql`
-        INSERT INTO books (id, name, description, image)
-        VALUES (${book.id}, ${book.name}, ${book.description}, ${book.image})
+        INSERT INTO books ( name, description, image)
+        VALUES ( ${book.name}, ${book.description}, ${book.image})
         ON CONFLICT (id) DO NOTHING;
       `;
     })
@@ -88,15 +91,14 @@ const seedHouses = async () => {
       ghost TEXT NOT NULL,
       commonRoom TEXT NOT NULL,
       heads JSONB,
-      traits JSONB,
-      image TEXT
+      traits JSONB
     );
   `;
 
   const insertedHouses = await Promise.all(
     houses.map(async (house) => {
       return sql`
-        INSERT INTO houses (id, name, houseColours, founder, animal, element, ghost, commonRoom, heads, traits, image )
+        INSERT INTO houses (id, name, houseColours, founder, animal, element, ghost, commonRoom, heads, traits )
         VALUES (${house.id}, 
         ${house.name}, 
         ${house.houseColours}, 
@@ -106,8 +108,7 @@ const seedHouses = async () => {
         ${house.ghost}, 
         ${house.commonRoom}, 
         ${sql.json(house.heads)}, 
-        ${sql.json(house.traits)}, 
-        ${house.image})
+        ${sql.json(house.traits)})
         ON CONFLICT (id) DO NOTHING;
       `;
     })
@@ -203,8 +204,8 @@ const seedPotions = async () => {
       characteristics TEXT,
       time TEXT,
       difficulty TEXT,
-      ingredients UUID[], -- Array of Ingredient references (assumes Ingredient table uses UUID as primary key)
-      inventors JSONB, -- Array of { id, firstName, lastName } objects
+      ingredients JSONB, 
+      inventors JSONB, 
       manufacturer TEXT
     );
   `;
@@ -223,7 +224,7 @@ const seedPotions = async () => {
           ${potion.characteristics},
           ${potion.time},
           ${potion.difficulty},
-          ${potion.ingredients ? sql.array(potion.ingredients) : sql.array([])},
+          ${potion.ingredients ? sql.json(potion.ingredients) : sql.json([])},
           ${potion.inventors ? sql.json(potion.inventors) : sql.json([])},
           ${potion.manufacturer}
         )
@@ -299,9 +300,8 @@ const seedBeasts = async () => {
   const insertedBeasts = await Promise.all(
     beasts.map(async (beast) => {
       return sql`
-        INSERT INTO beasts (id, name, description, image)
-        VALUES (
-          ${beast.id}, 
+        INSERT INTO beasts (name, description, image)
+        VALUES ( 
           ${beast.name}, 
           ${beast.description}, 
           ${beast.image}
@@ -334,7 +334,6 @@ const seedFavoriteItems = async () => {
     favoriteItems.map(async (item) => {
       return sql`
         INSERT INTO favorite_items (
-          id,
           user_id,
           fav_books,
           fav_characters,
@@ -344,7 +343,6 @@ const seedFavoriteItems = async () => {
           fav_ingredients
         )
         VALUES (
-          ${item.id},
           ${item.user_id},
           ${item.fav_books || []},
           ${item.fav_characters || []},
@@ -378,8 +376,8 @@ const seedCharacterComments = async () => {
   const insertedCharacterComments = await Promise.all(
     characterComments.map(async (comment) => {
       return sql`
-        INSERT INTO character_comments (id, user_id, character_id, comment, created_at)
-        VALUES (${comment.id}, ${comment.user_id}, ${comment.character_id}, ${comment.comment}, ${comment.createdAt})
+        INSERT INTO character_comments ( user_id, character_id, comment, created_at)
+        VALUES ( ${comment.user_id}, ${comment.character_id}, ${comment.comment}, ${comment.createdAt})
         ON CONFLICT (id) DO NOTHING;
       `;
     })
@@ -405,8 +403,8 @@ const seedSpellComments = async () => {
   const insertedSpellComments = await Promise.all(
     spellComments.map(async (comment) => {
       return sql`
-        INSERT INTO spell_comments (id, user_id, spell_id, comment, created_at)
-        VALUES (${comment.id}, ${comment.user_id}, ${comment.spell_id}, ${comment.comment}, ${comment.createdAt})
+        INSERT INTO spell_comments ( user_id, spell_id, comment, created_at)
+        VALUES ( ${comment.user_id}, ${comment.spell_id}, ${comment.comment}, ${comment.createdAt})
         ON CONFLICT (id) DO NOTHING;
       `;
     })
@@ -429,7 +427,7 @@ const seedBeastComments = async () => {
     );
   `;
 
-  console.log("Beast Comments table created (empty)")
+  console.log("Beast Comments table created (empty)");
 };
 
 // ------- seed Book Comments ----------
@@ -446,7 +444,7 @@ const seedBookComments = async () => {
     );
   `;
 
-  console.log("Book Comments table created (empty)")
+  console.log("Book Comments table created (empty)");
 };
 
 // ------- seed Potion Comments ----------
@@ -466,8 +464,8 @@ const seedPotionComments = async () => {
   const insertedPotionComments = await Promise.all(
     potionComments.map(async (comment) => {
       return sql`
-        INSERT INTO potion_comments (id, user_id, potion_id, comment, created_at)
-        VALUES (${comment.id}, ${comment.user_id}, ${comment.potion_id}, ${comment.comment}, ${comment.createdAt})
+        INSERT INTO potion_comments ( user_id, potion_id, comment, created_at)
+        VALUES ( ${comment.user_id}, ${comment.potion_id}, ${comment.comment}, ${comment.createdAt})
         ON CONFLICT (id) DO NOTHING;
       `;
     })
@@ -493,8 +491,8 @@ const seedIngredientComments = async () => {
   const insertedIngredientComments = await Promise.all(
     ingredientComments.map(async (comment) => {
       return sql`
-        INSERT INTO ingredient_comments (id, user_id, ingredient_id, comment, created_at)
-        VALUES (${comment.id}, ${comment.user_id}, ${comment.ingredient_id}, ${comment.comment}, ${comment.createdAt})
+        INSERT INTO ingredient_comments ( user_id, ingredient_id, comment, created_at)
+        VALUES (${comment.user_id}, ${comment.ingredient_id}, ${comment.comment}, ${comment.createdAt})
         ON CONFLICT (id) DO NOTHING;
       `;
     })
@@ -502,9 +500,6 @@ const seedIngredientComments = async () => {
 
   return insertedIngredientComments;
 };
-
-
-
 
 //  ---- Main seed function -------------------------------
 const seedDatabase = async () => {

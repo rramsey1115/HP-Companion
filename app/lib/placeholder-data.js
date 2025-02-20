@@ -16,8 +16,7 @@ export const users = [
     email: "user@email.com",
     password: "password",
     isAdmin: true,
-    house:
-      "0367baf3-1cb6-805fd37a-65ae-4fe5-b336-d767b8b7c73a-bede-48e17e1cd005",
+    house: "805fd37a-65ae-4fe5-b336-d767b8b7c73a",
     patronus: "Elephant",
   },
 ];
@@ -9068,13 +9067,13 @@ export const spellComments = [
 export const potionComments = [
   {
     user_id: "410544b2-4001-4271-9855-fec4b6a6442a",
-    potion_id: "0e7f8933-3195-4b9c-b521-a51702e97fd2",
+    potion_id: "0106fb32-b00d-4d70-9841-4b7c2d2cca71",
     comment: "Brewing this potion requires extreme precision!",
     createdAt: new Date(),
   },
   {
     user_id: "410544b2-4001-4271-9855-fec4b6a6443b",
-    potion_id: "fccec399-3e5e-4195-b220-25d60194b239",
+    potion_id: "24b57eec-746e-48ef-bee9-85ce436487ea",
     comment: "A lifesaving potion in tough situations.",
     createdAt: new Date(),
   },

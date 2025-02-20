@@ -1,5 +1,6 @@
 {
   "name": "realtor-next-app",
+  "type": "module",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -7,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "seed": ""
+    "seed": "node app/seed/seed.js"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",

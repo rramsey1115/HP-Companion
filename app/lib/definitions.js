@@ -41,10 +41,22 @@ export const Potion = {
   characteristics: String,
   time: String,
   difficulty: String,
-  ingredients: [{ type: String, ref: 'Ingredient' }],
-  inventors: [{id: String, firstName: String, lastName: String}],
+  ingredients: [
+    {
+      id: String ,
+      name: String,
+    },
+  ],
+  inventors: [
+    {
+      id: String,
+      firstName: String,
+      lastName: String,
+    },
+  ],
   manufacturer: String,
 };
+
 
 export const Ingredient = {
   id: { type: String, required: true },
