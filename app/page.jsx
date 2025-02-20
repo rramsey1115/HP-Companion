@@ -1,7 +1,9 @@
-import Image from "next/image";
 
 export default function Home() {
   return (
-    <h1>Realtor Next App!</h1>
+    <>
+      <h1>HP Companion App!</h1>
+      <h3>Home Page</h3>
+    </>
   );
 }
