@@ -1,6 +1,6 @@
 
 import { NextResponse } from "next/server";
-import { sql } from "../../lib/connection/db";
+import { sql } from "../../../lib/connection/db.js";
 
 export async function GET(req) {
   try {

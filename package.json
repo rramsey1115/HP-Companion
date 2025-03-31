@@ -11,9 +11,13 @@
     "seed": "node app/seed/seed.js"
   },
   "dependencies": {
+    "@headlessui/react": "^2.2.0",
+    "@heroicons/react": "^2.2.0",
     "bcrypt": "^5.1.1",
     "dotenv": "^16.4.7",
+    "headlessui": "^0.0.0",
     "next": "15.1.7",
+    "nextjs": "^0.0.3",
     "postgres": "^3.4.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
@@ -23,6 +27,6 @@
     "eslint": "^9",
     "eslint-config-next": "15.1.7",
     "postcss": "^8",
-    "tailwindcss": "^3.4.1"
+    "tailwindcss": "^3.4.17"
   }
 }
