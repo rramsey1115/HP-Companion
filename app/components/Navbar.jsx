@@ -6,8 +6,10 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
 const navigation = [
-    { name: 'Home', href: '/', current: true },
     { name: 'Characters', href: '/characters', current: false },
+    { name: 'Magic', href: '/magic', current: false },
+    { name: 'Beasts', href: '/beasts', current: false },
+    { name: 'Books', href: '/books', current: false },
 ]
 
 function classNames(...classes) {
@@ -32,13 +34,17 @@ const Navbar = () => {
                     </div>
                     <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                         <div className="flex shrink-2 items-center">
-                            <Image
-                                alt="logo"
-                                src="/images/logo.png"
-                                width={80}
-                                height={80}
-                                className="h-10 w-auto"
-                            />
+                            <a
+                                href='/'
+                            >
+                                <Image
+                                    alt="logo"
+                                    src="/images/logo.png"
+                                    width={80}
+                                    height={80}
+                                    className="h-10 w-auto"
+                                />
+                            </a>
                         </div>
                         <div className="hidden sm:ml-6 sm:block">
                             <div className="flex space-x-4">
