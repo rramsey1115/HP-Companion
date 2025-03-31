@@ -1,6 +1,6 @@
 "use client"
 
-import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
+import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
@@ -21,7 +21,7 @@ const Navbar = () => {
     const pathname = usePathname();
 
     return (
-        <Disclosure as="nav" className="bg-gray-800">
+        <Disclosure as="nav" className="bg-gray-800 position:sticky top-0 w-screen">
             <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
                 <div className="relative flex h-16 items-center justify-between">
                     <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -37,6 +37,7 @@ const Navbar = () => {
                         <div className="flex shrink-2 items-center">
                             <a
                                 href='/'
+                                as="image"
                             >
                                 <Image
                                     alt="logo"
@@ -44,6 +45,7 @@ const Navbar = () => {
                                     width={80}
                                     height={80}
                                     className="h-10 w-auto"
+                                    priority
                                 />
                             </a>
                         </div>
