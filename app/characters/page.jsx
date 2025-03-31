@@ -2,14 +2,12 @@
 
 import { useEffect, useState } from "react";
 
-
-
 const Characters = () => {
     const [characters, setCharacters] = useState([]);
     const [loading, setLoading] = useState(true);
 
     const getAndSetCharacters = async () => {
-      const res = await fetch("http://localhost:3000/api/characters");
+      const res = await fetch("/api/characters");
       const data = await res.json();
       setCharacters(data);
       setLoading(false);
