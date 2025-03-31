@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { sql } from "../../lib/connection/db";
+import { sql } from "../../../lib/connection/db.js";
 
 export const getAllIngredients = async () => {
   try {

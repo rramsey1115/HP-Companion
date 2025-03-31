@@ -1,7 +1,7 @@
 "use client"
 
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
@@ -10,6 +10,7 @@ const navigation = [
     { name: 'Magic', href: '/magic', current: false },
     { name: 'Beasts', href: '/beasts', current: false },
     { name: 'Books', href: '/books', current: false },
+    { name: 'Houses', href: '/houses', current: false },
 ]
 
 function classNames(...classes) {
