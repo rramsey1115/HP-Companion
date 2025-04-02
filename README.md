@@ -1,6 +1,18 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Intro from Ryan
+===
 
-## Getting Started
+This project is my first attempt at using Next.js with Vercel and a Neon database for deployment.
+
+I gathered data from free Harry Potter APIs online, and seeded the data to my Neon database to be used in the project, as to not exceed API request limits during development. I also wanted to learn how to setup a deployment with Vercel/Neon as opposed to making my calls to an external API... but still wanted to fun of using Harry Potter data!
+
+The goal was to become familiar with project setup, routing, and writing database requests using Next.js. This may not be the cleanest and most eloquent way of doing things, but as a first attempt it is all about the learning process! Lots of trial and error, reading docs, and watching videos.
+
+I also am using Tailwind CSS in this project, as it seems to be a commonly preferred method of styling Next.js applications. I have used Tailwind CSS in the past, however there is a bit of a learning curve in efficiency due to not having a ton of their style shorthand committed to memory. Another reason this project has been a great growth opportunity for me!
+
+
+## Getting Started - from Next.js
+
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 First, run the development server:
 
