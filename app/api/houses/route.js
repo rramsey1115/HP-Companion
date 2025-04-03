@@ -1,10 +1,11 @@
 import { NextResponse } from "next/server";
 import { db } from "../../../lib/connection/db.js";
+import { houses } from "@/lib/definitions.js";
 
-export const getAllHouses = async () => {
+export async function GET(req) {
   try {
-    const houses = db.select().from(houses);
-    return NextResponse.json(houses, {status: 200});
+    const allHouses = await db.select().from(houses);
+    return NextResponse.json(allHouses, {status: 200});
   } catch (err) {
     console.log("Error in get all houses:", err);
     return NextResponse.json({error: "Error in get all houses"}, {status: 500});
