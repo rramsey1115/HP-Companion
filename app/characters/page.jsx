@@ -11,13 +11,11 @@ const Characters = () => {
         setLoading(true);
         if (filter == 1 || filter == 2) {
             // if filter A-Z by last
-            console.log("filter A-Z")
             const res = await fetch(`/api/characters?filter=${parseInt(filter)}`) 
             const data = await res.json();
             setCharacters(data);
         } else {
             // get all characters in default order
-            console.log("filter default");
             const res = await fetch("/api/characters");
             const data = await res.json();
             setCharacters(data);

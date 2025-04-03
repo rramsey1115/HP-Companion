@@ -1,15 +1,13 @@
 import { NextResponse } from "next/server";
-import { sql } from "../../../lib/connection/db.js";
+import { db } from "../../../lib/connection/db.js";
+import { potions } from "../../../lib/definitions.js";
 
-export const getAllPotions = async () => {
+export async function GET(req) {
   try {
-    const potions = await sql`SELECT * FROM potions`;
-    return NextResponse.json(potions);
+    const allPotions = await db.select().from(potions).orderBy(potions.name);
+    return NextResponse.json(allPotions, {status: 200});
   } catch (err) {
-    console.error("Error fetching potions: ", err);
-    return NextResponse.json(
-      { error: "Failed to fetch potions" },
-      { status: 500 }
-    );
+    console.log("Error in getAllPotions: ", err);
+    return NextResponse.json({error: "Error in get all potions"}, {status: 400})
   }
 };

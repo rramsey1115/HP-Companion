@@ -1,15 +1,12 @@
 import { NextResponse } from "next/server";
-import { sql } from "../../../lib/connection/db.js";
+import { db } from "../../../lib/connection/db.js";
 
 export const getAllHouses = async () => {
   try {
-    const houses = await sql`SELECT * FROM houses`;
-    return NextResponse.json(houses);
+    const houses = db.select().from(houses);
+    return NextResponse.json(houses, {status: 200});
   } catch (err) {
-    console.error("Error fetching houses: ", err);
-    return NextResponse.json(
-      { error: "Failed to fetch houses" },
-      { status: 500 }
-    );
+    console.log("Error in get all houses:", err);
+    return NextResponse.json({error: "Error in get all houses"}, {status: 500});
   }
 };

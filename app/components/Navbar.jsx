@@ -37,7 +37,6 @@ const Navbar = () => {
                         <div className="flex shrink-2 items-center">
                             <a
                                 href='/'
-                                as="image"
                             >
                                 <Image
                                     alt="logo"
@@ -46,6 +45,7 @@ const Navbar = () => {
                                     height={80}
                                     className="h-10 w-auto"
                                     priority
+                                    fill={false}
                                 />
                             </a>
                         </div>
