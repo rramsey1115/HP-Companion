@@ -1,16 +1,31 @@
-Intro from Ryan
-===
+# **Harry Potter Companion App**  
 
-This project is my first attempt at using Next.js with Vercel and a Neon database for deployment.
+### **Overview**  
+This project is my **first attempt at using Next.js with Vercel and a Neon database** for deployment. The goal was to **learn full-stack development** with Next.js, Drizzle ORM, and serverless databases while working with **Harry Potter data**.  
 
-I gathered data from free Harry Potter APIs online, and seeded the data to my Neon database to be used in the project, as to not exceed API request limits during development. I also wanted to learn how to setup a deployment with Vercel/Neon as opposed to making my calls to an external API... but still wanted to fun of using Harry Potter data!
+### **Tech Stack**
+- **Next.js** – Full-stack framework for React  
+- **Vercel** – Deployment platform  
+- **Neon** – Serverless PostgreSQL database  
+- **Drizzle ORM** – For schema setup, migrations, seeding, and API queries  
+- **Tailwind CSS** – Utility-first styling  
 
-The goal was to become familiar with project setup, routing, and writing database requests using Next.js. This may not be the cleanest and most eloquent way of doing things, but as a first attempt it is all about the learning process! Lots of trial and error, reading docs, and watching videos.
+### **Data Source & API Usage**  
+I initially gathered data from **free Harry Potter APIs**, but to avoid exceeding API request limits during development, I **seeded the data into my Neon database**. This also gave me the chance to practice database design and API development.  
 
-I also am using Tailwind CSS in this project, as it seems to be a commonly preferred method of styling Next.js applications. I have used Tailwind CSS in the past, however there is a bit of a learning curve in efficiency due to not having a ton of their style shorthand committed to memory. Another reason this project has been a great growth opportunity for me!
+### **Project Goals**  
+This project helped me:  
+✅ Learn **Next.js** project setup and routing  
+✅ Work with **Neon/PostgreSQL** instead of relying on an external API  
+✅ Practice **Drizzle ORM** for querying and API endpoint creation  
+✅ Improve **Tailwind CSS** efficiency and shorthand usage  
 
+### **Final Thoughts**  
+This may not be the most **optimized or polished** project yet, but it's been a fantastic **learning experience**. It involved **lots of trial and error**, reading documentation, and watching tutorials. I'm excited to continue refining it!  
 
-## Getting Started - from Next.js
+---
+
+## Getting Started - startup instructions from Next
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
