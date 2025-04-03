@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const Magic = () => {
 
@@ -9,7 +10,7 @@ const Magic = () => {
             </header>
             <section className="flex flex-wrap justify-center">
                 {/* Potions background container */}
-                <div className="flex-1 m-7 relative text-center outline border-solid rounded-sm border-stone-600 group min-w-[300px]" style={{ height: '300px' }}>
+                <Link href="/magic/potions" className="flex-1 m-7 relative text-center outline border-solid rounded-sm border-stone-600 group min-w-[300px]" style={{ height: '300px' }}>
                     <div 
                         className="absolute inset-0 bg-cover bg-center z-0 transition-all duration-300"
                         style={{ 
@@ -27,10 +28,10 @@ const Magic = () => {
                     <div className="opacity-0 hover:opacity-100 duration-300 absolute inset-0 z-20 flex justify-center items-center text-6xl text-white font-semibold">
                         Potions
                     </div>
-                </div>
+                </Link>
 
                 {/* Spells background container */}
-                <div className="flex-1 m-7 relative text-center outline border-solid rounded-sm border-stone-600 group min-w-[300px]" style={{ height: '300px' }}>
+                <Link href="/magic/spells" className="flex-1 m-7 relative text-center outline border-solid rounded-sm border-stone-600 group min-w-[300px]" style={{ height: '300px' }}>
 
                     <div 
                         className="absolute inset-0 bg-cover bg-center z-0 transition-all duration-300"
@@ -49,7 +50,7 @@ const Magic = () => {
                     <div className="opacity-0 hover:opacity-100 duration-300 absolute inset-0 z-20 flex justify-center items-center text-6xl text-white font-semibold">
                         Spells
                     </div>
-                </div>
+                </Link>
             </section>
         </>
     );
