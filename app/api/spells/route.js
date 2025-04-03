@@ -1,10 +1,11 @@
 import { NextResponse } from "next/server";
-import { sql } from "../../../lib/connection/db.js";
+import { db } from "../../../lib/connection/db.js";
+import { spells } from "@/lib/definitions.js";
 
-export const getAllSpells = async () => {
+export async function GET(req) {
   try {
-    const spells = await sql`SELECT * FROM spells`;
-    return NextResponse.json(spells);
+    const allSpells = await db.select().from(spells).orderBy(spells.name);
+    return NextResponse.json(allSpells, {status: 200});
   } catch (err) {
     console.error("Error fetching spells: ", err);
     return NextResponse.json(
