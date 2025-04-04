@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import { MainList } from "../components/MainList";
 
 const Beasts = () => {
     const [beasts, setBeasts] = useState([]);
@@ -12,15 +13,15 @@ const Beasts = () => {
         // set dummy delay to simulate long api call
         setTimeout(() => {
             setLoading(false);
-        }, 1200)
+        }, 2000)
     }
 
     useEffect(() => {
         getAndSetBeasts();
     }, []);
 
-    if (loading || beasts.length <= 0) {
-        return <h1>...Loading</h1>;
+    const handleListClick = (e) => {
+        console.log("clicked on beast: ", e.currentTarget.id)
     }
 
     return (
@@ -28,16 +29,7 @@ const Beasts = () => {
             <header>
                 <h1 className="text-3xl h-10 my-4">Beasts</h1>
             </header>
-            <section className="border-t-2 border-stone-300 m-1 p-1">
-                {beasts.map((potion) => {
-                    return (<div
-                        key={potion.id}
-                        className="cursor-pointer hover:bg-yellow-500 hover:text-black w-3/4"
-                    >
-                        <h5 className="text-lg font-thin">{potion.name}</h5>
-                    </div>);
-                })}
-            </section>
+            <MainList array={beasts} loading={loading} handleListClick={handleListClick}/>
         </>
     )
 }

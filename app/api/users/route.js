@@ -1,10 +1,15 @@
+import { db } from "@/lib/connection/db";
+import { users } from "@/lib/definitions.js";
 import { NextResponse } from "next/server";
-import { sql } from "../../../lib/connection/db.js";
 
-export const getAllUsers = async () => {
+
+export async function GET(req) {
   try {
-    const users = await sql`SELECT * FROM users`;
-    return NextResponse.json(users);
+    const foundUsers = await db.select().from(users);
+    if (foundUsers.length == 0) {
+      return NextResponse.json({ error: "No users found" }, { status: 500 })
+    }
+    return NextResponse.json(foundUsers);
   } catch (err) {
     console.error("Error fetching users: ", err);
     return NextResponse.json(
