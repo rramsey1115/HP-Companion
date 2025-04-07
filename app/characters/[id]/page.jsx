@@ -2,6 +2,7 @@
 import { LoadingSpinner } from "@/app/components/LoadingSpinner";
 import { useEffect, useState } from "react";
 import CharacterAbout from "./CharacterAbout";
+import CharacterSkeleton from "@/app/components/CharacterSkeleton";
 const { useParams } = require("next/navigation")
 
 const CharacterDetail = () => {
@@ -13,7 +14,7 @@ const CharacterDetail = () => {
         if (id) {
             setLoading(true);
             getAndSetCharacter(id);
-            setLoading(false);
+            setTimeout(() => { setLoading(false); }, 2000)
         }
     }, [id]);
 
@@ -24,8 +25,8 @@ const CharacterDetail = () => {
     }
 
     return !character || loading
-        ? <LoadingSpinner />
-        : <CharacterAbout character={character} />
+        ? <CharacterSkeleton />
+        : <CharacterAbout ch={character} />
 }
 
 export default CharacterDetail;
