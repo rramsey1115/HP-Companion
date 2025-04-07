@@ -5,6 +5,7 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
+// can update tabs and paths using navigation collection
 const navigation = [
     { name: 'Characters', href: '/characters', current: false },
     { name: 'Magic', href: '/magic', current: false },
@@ -61,7 +62,7 @@ const Navbar = () => {
                                             aria-current={item.current ? 'page' : undefined}
                                             className={classNames(
                                                 isCurrent ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                                                'rounded-md px-3 py-2 text-sm font-medium',
+                                                'rounded-md px-3 py-2 text-md',
                                             )}
                                         >
                                             {item.name}

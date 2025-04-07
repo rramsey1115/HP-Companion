@@ -23,10 +23,10 @@ const Characters = () => {
             setCharacters(data);
         }
      
-        //set 2 second delay, just to make sure my loading UI works - faking a long api call basically
+        //set 1.5 second delay, just to make sure my loading UI works - faking a long api call basically
         setTimeout(() => {
             setLoading(false);
-        }, 2000)
+        }, 1500)
         
     };
 

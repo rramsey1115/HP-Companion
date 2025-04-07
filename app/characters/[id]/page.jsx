@@ -1,6 +1,7 @@
 "use client"
-
+import { LoadingSpinner } from "@/app/components/LoadingSpinner";
 import { useEffect, useState } from "react";
+import CharacterAbout from "./CharacterAbout";
 const { useParams } = require("next/navigation")
 
 const CharacterDetail = () => {
@@ -9,12 +10,10 @@ const CharacterDetail = () => {
     const [character, setCharacter] = useState({});
 
     useEffect(() => {
-        if(id) {
+        if (id) {
             setLoading(true);
             getAndSetCharacter(id);
-            setTimeout(() => { //set intentional delay to make sure loading ui works
-                setLoading(false);
-            }, 2000)
+            setLoading(false);
         }
     }, [id]);
 
@@ -25,8 +24,8 @@ const CharacterDetail = () => {
     }
 
     return !character || loading
-    ? <p>...Loading</p> 
-    :<h1>CharacterDetail for {character?.name}</h1>
+        ? <LoadingSpinner />
+        : <CharacterAbout character={character} />
 }
 
 export default CharacterDetail;
