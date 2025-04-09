@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 
 export async function GET(req) {
   try {
-    const allBooks = await db.select().from(books);
+    const allBooks = await db.select().from(books).orderBy(books.name);
     return NextResponse.json(allBooks);
   } catch (error) {
     console.error("Error in get books:", error);

@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 
 export async function GET(req) {
   try {
-    const data = await db.select().from(ingredients)
+    const data = await db.select().from(ingredients).orderBy(ingredients.name)
     if(!data) {
       return NextResponse.json({error: "No ingredients found"}, {status: 404});
     }

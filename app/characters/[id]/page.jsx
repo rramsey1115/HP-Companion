@@ -1,5 +1,4 @@
 "use client"
-import { LoadingSpinner } from "@/app/components/LoadingSpinner";
 import { useEffect, useState } from "react";
 import CharacterAbout from "./CharacterAbout";
 import CharacterSkeleton from "@/app/components/CharacterSkeleton";
