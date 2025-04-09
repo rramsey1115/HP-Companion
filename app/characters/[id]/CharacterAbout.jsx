@@ -42,9 +42,9 @@ const CharacterAbout = ({ ch }) => {
                     <p>Birth Year: {ch.yearOfBirth || ""}</p>
                     <p>Ancestry: {ch.ancestry ? ch.ancestry.charAt(0).toUpperCase() + ch.ancestry.slice(1) : "Unknown"}</p>
                     <p>Patronus: {ch.patronus ? ch.patronus.charAt(0).toUpperCase() + ch.patronus.slice(1) : "None"}</p>
-                    <p>Species: {ch.species ? ch.species.charAt(0).toUpperCase() + ch.species.slice(1) : "Unknown"}</p>
-
                     <p>Wizard: {ch.wizard ? 'Yes' : 'No'}</p>
+                    {(ch.wand.wood && ch.wand.core && ch.wand.length)
+                        && (<p>Wand: {ch.wand.length}in. - {ch.wand.wood.charAt([0]).toUpperCase() + ch.wand.wood.slice(1)} - {ch.wand.core.charAt([0]).toUpperCase() + ch.wand.core.slice(1)}</p>)}
                 </div>
                 <div>
                     <h3 className="text-xl font-semibold border-b border-zinc-600 pb-1 mb-2">On Screen</h3>

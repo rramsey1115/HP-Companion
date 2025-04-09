@@ -52,8 +52,8 @@ const Characters = () => {
                     className="w-[90%] sm:w-1/2 bg-zinc-800 border border-zinc-600 text-white text-sm rounded-lg p-2.5 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500"
                 >
                     <option value={0}>Order By</option>
-                    <option value={1}>Last A-Z</option>
-                    <option value={2}>Last Z-A</option>
+                    <option value={1}>Last Name A-Z</option>
+                    <option value={2}>Last Name Z-A</option>
                 </select>
             </header>
 

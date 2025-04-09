@@ -1,5 +1,5 @@
 {
-  "id": "d1a575fb-0240-44ad-981a-d75ee6004cc3",
+  "id": "523af10f-e3f1-417f-b062-fbbf65794866",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -225,21 +225,9 @@
           "primaryKey": false,
           "notNull": false
         },
-        "wand_wood": {
-          "name": "wand_wood",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "wand_core": {
-          "name": "wand_core",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "wand_length": {
-          "name": "wand_length",
-          "type": "text",
+        "wand": {
+          "name": "wand",
+          "type": "json",
           "primaryKey": false,
           "notNull": false
         },
