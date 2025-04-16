@@ -1,6 +1,9 @@
+
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/app/components/Navbar";
+import { getServerSession } from "next-auth";
+import SessionWrapper from "./components/SessionWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,16 +21,20 @@ export const metadata = {
   description: "Harry Potter app built to learn Next.js"
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const session = await getServerSession();
+
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Navbar />
-        <main className="my-4 mx-auto w-4/5 min-w-96">
-          {children}
-        </main>
+        <SessionWrapper session={session}>
+          <Navbar />
+          <main className="my-4 mx-auto w-4/5 min-w-96">
+            {children}
+          </main>
+        </SessionWrapper>
       </body>
     </html>
   );
