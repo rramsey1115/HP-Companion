@@ -25,7 +25,8 @@ function classNames(...classes) {
 
 const Navbar = () => {
   const pathname = usePathname()
-  const { data: session } = useSession()
+  const { data: session, status } = useSession()
+  const isLoading = status === "loading"
 
   return (
     <Disclosure as="nav" className="bg-gray-800 sticky top-0 z-50 w-full">
@@ -48,7 +49,7 @@ const Navbar = () => {
 
                 {/* Desktop navigation */}
                 <div className="hidden sm:ml-6 sm:flex sm:space-x-4">
-                  {navigation.map((item) => {
+                  {session && !isLoading && navigation.map((item) => {
                     const isCurrent = pathname === item.href
                     return (
                       <a
@@ -70,7 +71,7 @@ const Navbar = () => {
 
               {/* Right: Auth */}
               <div className="hidden sm:flex items-center space-x-4">
-                {session ? (
+                {session && !isLoading ? (
                   <>
                     <span className="text-gray-300 text-sm">
                       {session?.user?.name}
@@ -82,14 +83,14 @@ const Navbar = () => {
                       Sign out
                     </Button>
                   </>
-                ) : (
+                ) : !isLoading ? (
                   <Button
                     onClick={() => signIn()}
                     className="rounded-md bg-gray-700 px-3 py-2 text-sm text-white hover:bg-gray-600"
                   >
                     Sign in
                   </Button>
-                )}
+                ) : null} {/* Don't show anything while loading */}
               </div>
 
               {/* Mobile menu button */}
@@ -108,7 +109,7 @@ const Navbar = () => {
 
           {/* Mobile menu */}
           <DisclosurePanel className="sm:hidden px-2 pt-2 pb-3 space-y-1">
-            {navigation.map((item) => {
+            {session && !isLoading && navigation.map((item) => {
               const isCurrent = pathname === item.href
               return (
                 <DisclosureButton
@@ -128,7 +129,7 @@ const Navbar = () => {
             })}
 
             <div className="mt-3 border-t border-gray-700 pt-3">
-              {session ? (
+              {session && !isLoading ? (
                 <>
                   <div className="px-3 text-gray-300 text-sm mb-1">
                     {session?.user?.name}
@@ -140,14 +141,14 @@ const Navbar = () => {
                     Sign out
                   </Button>
                 </>
-              ) : (
+              ) : !isLoading ? (
                 <Button
                   onClick={() => signIn()}
                   className="w-full rounded-md bg-gray-700 px-3 py-2 text-sm text-white hover:bg-gray-600"
                 >
                   Sign in
                 </Button>
-              )}
+              ) : null} {/* Don't show anything while loading */}
             </div>
           </DisclosurePanel>
         </>
