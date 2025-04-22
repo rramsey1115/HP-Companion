@@ -26,8 +26,8 @@ const Books = () => {
 
     return (
         <>
-            <header>
-                <h1 className="text-3xl h-10 my-4">Books</h1>
+            <header className="flex flex-col items-center gap-4 mt-10 mb-6 px-4 sm:px-8">
+                <h1 className="text-3xl font-semibold text-center">Books</h1>
             </header>
             <MainList array={books} loading={loading} handleListClick={handleListClick} />
         </>

@@ -5,16 +5,16 @@ const Magic = () => {
 
     return (
         <>
-            <header>
-                <h1 className="text-3xl h-10 my-4">Magic of the HP Universe</h1>
+            <header className="flex flex-col items-center gap-4 mt-10 mb-6 px-4 sm:px-8">
+                <h1 className="text-3xl font-semibold text-center">Magic of the HP Universe</h1>
             </header>
             <section className="flex flex-wrap justify-center">
                 {/* Potions background container */}
                 <Link href="/magic/potions" className="flex-1 m-7 relative text-center outline border-solid rounded-sm border-stone-600 group min-w-[300px]" style={{ height: '300px' }}>
-                    <div 
+                    <div
                         className="absolute inset-0 bg-cover bg-center z-0 transition-all duration-300"
-                        style={{ 
-                            backgroundImage: 'url(/images/potions.jpg)', 
+                        style={{
+                            backgroundImage: 'url(/images/potions.jpg)',
                             backgroundSize: 'cover',
                             backgroundPosition: 'center',
                             backgroundRepeat: 'no-repeat',
@@ -33,10 +33,10 @@ const Magic = () => {
                 {/* Spells background container */}
                 <Link href="/magic/spells" className="flex-1 m-7 relative text-center outline border-solid rounded-sm border-stone-600 group min-w-[300px]" style={{ height: '300px' }}>
 
-                    <div 
+                    <div
                         className="absolute inset-0 bg-cover bg-center z-0 transition-all duration-300"
-                        style={{ 
-                            backgroundImage: 'url(/images/spells.png)', 
+                        style={{
+                            backgroundImage: 'url(/images/spells.png)',
                             backgroundSize: 'cover',
                             backgroundPosition: 'center',
                             backgroundRepeat: 'no-repeat',

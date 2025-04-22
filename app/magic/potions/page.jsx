@@ -26,8 +26,9 @@ const Potions = () => {
 
     return (
         <>
-            <header>
-                <h1 className="text-3xl h-10 my-4">Potions</h1>
+            <header className="flex flex-col items-center gap-4 mt-10 mb-6 px-4 sm:px-8">
+
+                <h1 className="text-3xl font-semibold text-center">Potions</h1>
             </header>
             <MainList array={potions} loading={loading} handleListClick={handleListClick} />
         </>

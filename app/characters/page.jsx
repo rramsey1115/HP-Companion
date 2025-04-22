@@ -42,7 +42,7 @@ const Characters = () => {
 
     return (
         <>
-            <header className="flex flex-col items-center gap-4 mt-10 mb-6">
+            <header className="flex flex-col items-center gap-4 mt-10 mb-6 px-4 sm:px-8">
                 <h1 className="text-3xl font-semibold text-center">Characters</h1>
                 <select
                     value={filter}

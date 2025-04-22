@@ -26,10 +26,10 @@ const Beasts = () => {
 
     return (
         <>
-            <header>
-                <h1 className="text-3xl h-10 my-4">Beasts</h1>
+            <header className="flex flex-col items-center gap-4 mt-10 mb-4 px-4 sm:px-8">
+                <h1 className="text-3xl font-semibold text-center">Beasts</h1>
             </header>
-            <MainList array={beasts} loading={loading} handleListClick={handleListClick}/>
+            <MainList array={beasts} loading={loading} handleListClick={handleListClick} />
         </>
     )
 }
